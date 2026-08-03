@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenGame Marketplace Publisher"
+  short_description: "Publish and verify MCP and Skill listings"
+  default_prompt: "Use $opengame-marketplace-publisher to prepare and verify a safe marketplace release for this MCP or Skill."
