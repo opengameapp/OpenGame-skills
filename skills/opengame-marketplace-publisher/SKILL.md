@@ -64,8 +64,9 @@ for target-specific checks and current-command guardrails.
 
 For every target explicitly marked Release:
 
-1. Check its current official documentation and CLI help. Do not rely on a
-   remembered UI, API, schema, or command.
+1. Check its current official documentation and supported release flow. Do not
+   rely on a remembered UI, API, schema, or command, and do not substitute a
+   CLI when the artifact owner's policy requires an authenticated web import.
 2. Confirm the signed-in account matches the intended public owner.
 3. Inspect the existing public record immediately before writing.
 4. Run a supported dry run or package preview when available.
