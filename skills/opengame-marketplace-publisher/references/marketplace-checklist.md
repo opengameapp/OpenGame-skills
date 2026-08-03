@@ -1,8 +1,8 @@
 # Marketplace checklist
 
 Use only the sections for the requested targets. Platform behavior changes, so
-check current official documentation and local CLI help before the first write
-in every release session.
+check current official documentation and the owner repository's release policy
+before the first write in every release session.
 
 ## Shared preflight
 
@@ -46,15 +46,27 @@ in every release session.
 
 ## ClawHub
 
-- Publish the reviewed directory that directly contains `SKILL.md`.
+- Confirm the reviewed source commit is public in
+  `opengameapp/OpenGame-skills` and the complete artifact is in
+  `skills/<slug>/`.
+- Use ClawHub's authenticated web **Import from GitHub** flow. Confirm the
+  connected account is the intended `opengameapp` owner, select the candidate
+  from `opengameapp/OpenGame-skills`, review its source path and proposed slug,
+  then publish in the web UI.
+- Do not use a locally bound personal GitHub identity, the ClawHub CLI, or an
+  automated publisher for this repository unless the owner explicitly changes
+  the release policy.
 - Check ClawHub's current mandatory license before every release. If it requires
   MIT-0, obtain and record rights-holder approval for the exact bundle under
   those terms; otherwise do not publish it to ClawHub.
 - Confirm the intended owner, stable slug, next semantic version, source
   repository, source commit, and source path.
-- Prefer the CLI's dry-run option before the real publish command.
 - Review the public Skill page, install command, owner, version, source link,
   license, and scan or moderation state.
+- When migrating an existing listing, retain its legacy source folder until
+  the public listing verifies the new GitHub repository and path and the
+  documented install flow succeeds. Record that verification before removing
+  the legacy source.
 - Treat a held or hidden listing as `published_pending` until it becomes
   publicly discoverable.
 
