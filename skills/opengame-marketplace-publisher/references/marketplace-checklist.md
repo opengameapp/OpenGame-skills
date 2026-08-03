@@ -1,0 +1,91 @@
+# Marketplace checklist
+
+Use only the sections for the requested targets. Platform behavior changes, so
+check current official documentation and local CLI help before the first write
+in every release session.
+
+## Shared preflight
+
+- Confirm the canonical repository, artifact path, clean release lane, and
+  source commit or tag.
+- Confirm the artifact name or slug, semantic version, public owner, homepage,
+  license, and target list.
+- Record an explicit action for each target. Never infer that authorization to
+  release one target also authorizes another.
+- Search the package for credentials, private data, internal URLs, local
+  absolute paths, and unlicensed assets.
+- Run the repository's own validation and tests.
+- Preview the files that will be packaged or uploaded.
+- Compare every target's existing public record before changing it.
+
+## GitHub source
+
+- Use one canonical repository rather than maintaining marketplace-specific
+  source copies.
+- Keep each independently installable Skill in `skills/<slug>/`.
+- Pin the release to a pushed commit or tag and record its public URL.
+- Avoid publishing from a dirty worktree or an unpushed local commit.
+
+## npm package
+
+- Confirm the package name, version, included files, executable entry point,
+  repository, homepage, license, and maintainer namespace.
+- Run the package build and tests, then inspect `npm pack --dry-run` output.
+- Check whether the account requires interactive 2FA or trusted publishing.
+- After publication, inspect the public npm page and test the documented
+  install or execution command in a clean environment when practical.
+
+## Official MCP Registry
+
+- Validate the current `server.json` schema and the package binding it names.
+- Ensure the package version is already reachable from its canonical package
+  registry before publishing the MCP record.
+- Use the current official publisher CLI and authentication flow.
+- Verify the exact server name, package version, status, repository, and
+  website on the public registry after publication.
+
+## ClawHub
+
+- Publish the reviewed directory that directly contains `SKILL.md`.
+- Check ClawHub's current mandatory license before every release. If it requires
+  MIT-0, obtain and record rights-holder approval for the exact bundle under
+  those terms; otherwise do not publish it to ClawHub.
+- Confirm the intended owner, stable slug, next semantic version, source
+  repository, source commit, and source path.
+- Prefer the CLI's dry-run option before the real publish command.
+- Review the public Skill page, install command, owner, version, source link,
+  license, and scan or moderation state.
+- Treat a held or hidden listing as `published_pending` until it becomes
+  publicly discoverable.
+
+## LobeHub
+
+- Distinguish an MCP listing from a Skill listing; they can use different
+  manifests, import paths, and version flows.
+- Confirm the GitHub identity or organization that will own or claim the
+  listing.
+- Validate supported homepage, repository, icon, category, and install fields
+  rather than assuming another marketplace's schema is accepted.
+- After submission, verify the public page and install flow rather than relying
+  on an import or upload acknowledgement.
+
+## Other directories
+
+- Verify that the directory accepts the artifact kind being submitted.
+- Prefer official registry ingestion or repository import over copying and
+  maintaining another source package.
+- Review requested OAuth scopes and repository permissions before consent.
+- Do not call an automatically ingested record verified until it is searchable
+  and its public page resolves.
+
+## Release evidence template
+
+Record or return one row per requested target:
+
+| Target | Intended identity | Before | Action | Final state | Public URL | Verification or blocker |
+| --- | --- | --- | --- | --- | --- | --- |
+| `<marketplace>` | `<owner/name@version>` | `<observed>` | `<none/dry-run/publish>` | `<listing_verified/install_verified/published_pending/unchanged/blocked>` | `<url>` | `<evidence>` |
+
+Keep only public identifiers, URLs, versions, source hashes, timestamps, and
+safe blocker summaries. Do not store authentication material or browser-session
+data in release evidence.
