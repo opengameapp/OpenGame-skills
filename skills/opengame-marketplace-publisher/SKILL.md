@@ -57,8 +57,13 @@ slug merely to update an existing Skill.
   source commit before publishing a catalog copy when the marketplace supports
   source attribution.
 
-Read [references/marketplace-checklist.md](references/marketplace-checklist.md)
-for target-specific checks and current-command guardrails.
+Read
+[references/opengame-publishing-manifest.v1.json](references/opengame-publishing-manifest.v1.json)
+as the exact account, source, and transport allowlist before any external
+write. If the manifest is absent, invalid, or does not define the target,
+stop that target. Read
+[references/marketplace-checklist.md](references/marketplace-checklist.md) for
+target-specific checks and current-command guardrails.
 
 ## Publish one target at a time
 
@@ -68,6 +73,10 @@ For every target explicitly marked Release:
    rely on a remembered UI, API, schema, or command, and do not substitute a
    CLI when the artifact owner's policy requires an authenticated web import.
 2. Confirm the signed-in account matches the intended public owner.
+   Compare it exactly with the manifest and record only a successful match or
+   a redacted mismatch. Never record an unexpected account identifier.
+   Capture identity-command output without displaying it, compare it locally,
+   and expose only `match`, `mismatch`, or a sanitized command failure.
 3. Inspect the existing public record immediately before writing.
 4. Run a supported dry run or package preview when available.
 5. Publish the exact artifact and version tied to the recorded source commit.
@@ -99,6 +108,9 @@ If a command times out, a browser session expires, or moderation is delayed:
   in the platform UI when required.
 - Stop only the affected target when identity, ownership, permissions, or
   verification cannot be established safely.
+- Treat `clawhub whoami` as a ClawHub token/handle check only. It does not prove
+  GitHub ownership and does not authorize CLI publication when the manifest
+  requires authenticated web GitHub Import.
 - Treat profile, avatar, organization, billing, and account-recovery changes as
   separate operations requiring their own authorization.
 
