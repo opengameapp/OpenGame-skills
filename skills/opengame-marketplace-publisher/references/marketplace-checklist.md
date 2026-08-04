@@ -6,6 +6,12 @@ before the first write in every release session.
 
 ## Shared preflight
 
+- Validate and load `opengame-publishing-manifest.v1.json`. Use its exact
+  account, source, and allowed-transport values; any missing target or mismatch
+  is `blocked`.
+- Capture identity-command output without displaying raw stdout or stderr,
+  compare it locally, and retain only `match`, redacted `mismatch`, or a
+  sanitized failure.
 - Confirm the canonical repository, artifact path, clean release lane, and
   source commit or tag.
 - Confirm the artifact name or slug, semantic version, public owner, homepage,
@@ -40,7 +46,10 @@ before the first write in every release session.
 - Validate the current `server.json` schema and the package binding it names.
 - Ensure the package version is already reachable from its canonical package
   registry before publishing the MCP record.
-- Use the current official publisher CLI and authentication flow.
+- For OpenGame, run the current official publisher CLI only inside a reviewed
+  GitHub Actions workflow owned by `opengameapp`, using GitHub Actions OIDC.
+  Do not substitute local GitHub device OAuth unless the manifest policy is
+  explicitly changed first.
 - Verify the exact server name, package version, status, repository, and
   website on the public registry after publication.
 
@@ -56,6 +65,10 @@ before the first write in every release session.
 - Do not use a locally bound personal GitHub identity, the ClawHub CLI, or an
   automated publisher for this repository unless the owner explicitly changes
   the release policy.
+- `clawhub whoami` (also `clawhub auth whoami`) may verify that a local ClawHub
+  token resolves to the expected handle. Require exit code zero and an exact
+  manifest match if the CLI is inspected, but do not treat it as GitHub
+  ownership evidence or permission to publish through the CLI.
 - Check ClawHub's current mandatory license before every release. If it requires
   MIT-0, obtain and record rights-holder approval for the exact bundle under
   those terms; otherwise do not publish it to ClawHub.

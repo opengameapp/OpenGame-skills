@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/opengameapp/OpenGame-skills/blob/main/skills/opengame-marketplace-publisher/references/opengame-publishing-manifest.schema.json",
+  "title": "OpenGame publishing identity manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "updatedAt", "policy", "brand", "artifactSources", "surfaces"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema": { "const": "opengame.publishing-identity.v1" },
+    "updatedAt": { "type": "string", "format": "date" },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "failClosed",
+        "unknownSurfaceAction",
+        "identityMismatchAction",
+        "sourceMismatchAction",
+        "recordUnexpectedIdentity"
+      ],
+      "properties": {
+        "mode": { "const": "allowlist" },
+        "failClosed": { "const": true },
+        "unknownSurfaceAction": { "const": "block" },
+        "identityMismatchAction": { "const": "block" },
+        "sourceMismatchAction": { "const": "block" },
+        "recordUnexpectedIdentity": { "const": false }
+      }
+    },
+    "brand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "homepage", "githubOwner"],
+      "properties": {
+        "name": { "const": "OpenGame" },
+        "homepage": { "const": "https://opengame.app/" },
+        "githubOwner": { "const": "opengameapp" }
+      }
+    },
+    "artifactSources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["skill", "mcp"],
+      "properties": {
+        "skill": { "$ref": "#/$defs/artifactSource" },
+        "mcp": { "$ref": "#/$defs/artifactSource" }
+      }
+    },
+    "surfaces": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["github", "npm", "clawhub", "lobehub", "mcpRegistry"],
+      "properties": {
+        "github": { "$ref": "#/$defs/surface" },
+        "npm": { "$ref": "#/$defs/surface" },
+        "clawhub": { "$ref": "#/$defs/surface" },
+        "lobehub": { "$ref": "#/$defs/surface" },
+        "mcpRegistry": { "$ref": "#/$defs/surface" }
+      }
+    }
+  },
+  "$defs": {
+    "artifactSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "pathPrefix"],
+      "properties": {
+        "repository": { "type": "string", "pattern": "^opengameapp/[A-Za-z0-9._-]+$" },
+        "pathPrefix": { "type": "string", "minLength": 1 }
+      }
+    },
+    "surface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identityKind",
+        "expectedAccount",
+        "allowedPublishTransports",
+        "identityEvidence",
+        "cliPublishAllowed"
+      ],
+      "properties": {
+        "identityKind": { "type": "string", "minLength": 1 },
+        "expectedAccount": { "type": "string", "minLength": 1 },
+        "allowedPublishTransports": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "identityEvidence": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "identityCommand": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "identityCommandExpected": { "type": "string", "minLength": 1 },
+        "identityCommandOutputHandling": { "const": "capture-compare-redact" },
+        "identityCommandProvesSourceOwnership": { "type": "boolean" },
+        "cliPublishAllowed": { "type": "boolean" },
+        "requiredSourceOwner": { "type": "string", "minLength": 1 },
+        "requiredSourceRepository": { "type": "string", "minLength": 1 },
+        "namespacePrefix": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [
+        {
+          "if": { "required": ["identityCommand"] },
+          "then": {
+            "required": [
+              "identityCommandExpected",
+              "identityCommandOutputHandling"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

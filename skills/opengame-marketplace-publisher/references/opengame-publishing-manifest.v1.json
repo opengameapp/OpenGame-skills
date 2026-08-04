@@ -1,0 +1,85 @@
+{
+  "$schema": "./opengame-publishing-manifest.schema.json",
+  "schema": "opengame.publishing-identity.v1",
+  "updatedAt": "2026-08-04",
+  "policy": {
+    "mode": "allowlist",
+    "failClosed": true,
+    "unknownSurfaceAction": "block",
+    "identityMismatchAction": "block",
+    "sourceMismatchAction": "block",
+    "recordUnexpectedIdentity": false
+  },
+  "brand": {
+    "name": "OpenGame",
+    "homepage": "https://opengame.app/",
+    "githubOwner": "opengameapp"
+  },
+  "artifactSources": {
+    "skill": {
+      "repository": "opengameapp/OpenGame-skills",
+      "pathPrefix": "skills/"
+    },
+    "mcp": {
+      "repository": "opengameapp/OpenGame-showcases",
+      "pathPrefix": "mcp/"
+    }
+  },
+  "surfaces": {
+    "github": {
+      "identityKind": "github-login",
+      "expectedAccount": "opengameapp",
+      "allowedPublishTransports": ["authenticated-browser"],
+      "identityEvidence": ["visible-account", "repository-owner"],
+      "cliPublishAllowed": false
+    },
+    "npm": {
+      "identityKind": "npm-username",
+      "expectedAccount": "opengameapp",
+      "allowedPublishTransports": ["npm-cli", "npm-trusted-publishing"],
+      "identityEvidence": ["command-exit-zero", "exact-account-match"],
+      "identityCommand": ["npm", "whoami"],
+      "identityCommandExpected": "opengameapp",
+      "identityCommandOutputHandling": "capture-compare-redact",
+      "cliPublishAllowed": true
+    },
+    "clawhub": {
+      "identityKind": "clawhub-handle",
+      "expectedAccount": "opengameapp",
+      "allowedPublishTransports": ["authenticated-web-github-import"],
+      "identityEvidence": [
+        "visible-clawhub-handle",
+        "server-verified-github-owner",
+        "exact-source-repository"
+      ],
+      "identityCommand": ["clawhub", "whoami"],
+      "identityCommandExpected": "opengameapp",
+      "identityCommandOutputHandling": "capture-compare-redact",
+      "identityCommandProvesSourceOwnership": false,
+      "cliPublishAllowed": false,
+      "requiredSourceOwner": "opengameapp",
+      "requiredSourceRepository": "opengameapp/OpenGame-skills"
+    },
+    "lobehub": {
+      "identityKind": "connected-github-login",
+      "expectedAccount": "opengameapp",
+      "allowedPublishTransports": ["authenticated-browser"],
+      "identityEvidence": ["connected-github-owner", "visible-publisher"],
+      "cliPublishAllowed": false
+    },
+    "mcpRegistry": {
+      "identityKind": "github-namespace",
+      "expectedAccount": "opengameapp",
+      "allowedPublishTransports": ["github-actions-oidc"],
+      "identityEvidence": [
+        "workflow-repository-owner",
+        "namespace-owner",
+        "package-binding"
+      ],
+      "cliPublishAllowed": true,
+      "requiredSourceOwner": "opengameapp",
+      "requiredSourceRepository": "opengameapp/OpenGame-showcases",
+      "namespacePrefix": "io.github.opengameapp/"
+    }
+  }
+}
