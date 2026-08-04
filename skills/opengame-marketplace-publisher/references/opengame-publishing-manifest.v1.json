@@ -31,7 +31,10 @@
       "expectedAccount": "opengameapp",
       "allowedPublishTransports": ["authenticated-browser"],
       "identityEvidence": ["visible-account", "repository-owner"],
-      "cliPublishAllowed": false
+      "cliPublishPolicy": {
+        "localAllowed": false,
+        "githubActionsAllowed": false
+      }
     },
     "npm": {
       "identityKind": "npm-username",
@@ -41,7 +44,10 @@
       "identityCommand": ["npm", "whoami"],
       "identityCommandExpected": "opengameapp",
       "identityCommandOutputHandling": "capture-compare-redact",
-      "cliPublishAllowed": true
+      "cliPublishPolicy": {
+        "localAllowed": true,
+        "githubActionsAllowed": true
+      }
     },
     "clawhub": {
       "identityKind": "clawhub-handle",
@@ -56,7 +62,10 @@
       "identityCommandExpected": "opengameapp",
       "identityCommandOutputHandling": "capture-compare-redact",
       "identityCommandProvesSourceOwnership": false,
-      "cliPublishAllowed": false,
+      "cliPublishPolicy": {
+        "localAllowed": false,
+        "githubActionsAllowed": false
+      },
       "requiredSourceOwner": "opengameapp",
       "requiredSourceRepository": "opengameapp/OpenGame-skills"
     },
@@ -65,7 +74,10 @@
       "expectedAccount": "opengameapp",
       "allowedPublishTransports": ["authenticated-browser"],
       "identityEvidence": ["connected-github-owner", "visible-publisher"],
-      "cliPublishAllowed": false
+      "cliPublishPolicy": {
+        "localAllowed": false,
+        "githubActionsAllowed": false
+      }
     },
     "mcpRegistry": {
       "identityKind": "github-namespace",
@@ -76,7 +88,10 @@
         "namespace-owner",
         "package-binding"
       ],
-      "cliPublishAllowed": true,
+      "cliPublishPolicy": {
+        "localAllowed": false,
+        "githubActionsAllowed": true
+      },
       "requiredSourceOwner": "opengameapp",
       "requiredSourceRepository": "opengameapp/OpenGame-showcases",
       "namespacePrefix": "io.github.opengameapp/"

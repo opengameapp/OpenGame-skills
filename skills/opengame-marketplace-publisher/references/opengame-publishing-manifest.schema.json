@@ -79,7 +79,7 @@
         "expectedAccount",
         "allowedPublishTransports",
         "identityEvidence",
-        "cliPublishAllowed"
+        "cliPublishPolicy"
       ],
       "properties": {
         "identityKind": { "type": "string", "minLength": 1 },
@@ -104,7 +104,15 @@
         "identityCommandExpected": { "type": "string", "minLength": 1 },
         "identityCommandOutputHandling": { "const": "capture-compare-redact" },
         "identityCommandProvesSourceOwnership": { "type": "boolean" },
-        "cliPublishAllowed": { "type": "boolean" },
+        "cliPublishPolicy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["localAllowed", "githubActionsAllowed"],
+          "properties": {
+            "localAllowed": { "type": "boolean" },
+            "githubActionsAllowed": { "type": "boolean" }
+          }
+        },
         "requiredSourceOwner": { "type": "string", "minLength": 1 },
         "requiredSourceRepository": { "type": "string", "minLength": 1 },
         "namespacePrefix": { "type": "string", "minLength": 1 }
