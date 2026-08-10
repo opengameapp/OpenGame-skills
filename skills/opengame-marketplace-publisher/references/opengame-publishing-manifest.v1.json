@@ -1,7 +1,7 @@
 {
   "$schema": "./opengame-publishing-manifest.schema.json",
   "schema": "opengame.publishing-identity.v1",
-  "updatedAt": "2026-08-04",
+  "updatedAt": "2026-08-09",
   "policy": {
     "mode": "allowlist",
     "failClosed": true,
@@ -19,10 +19,6 @@
     "skill": {
       "repository": "opengameapp/OpenGame-skills",
       "pathPrefix": "skills/"
-    },
-    "mcp": {
-      "repository": "opengameapp/OpenGame-showcases",
-      "pathPrefix": "mcp/"
     }
   },
   "surfaces": {
@@ -78,23 +74,6 @@
         "localAllowed": false,
         "githubActionsAllowed": false
       }
-    },
-    "mcpRegistry": {
-      "identityKind": "github-namespace",
-      "expectedAccount": "opengameapp",
-      "allowedPublishTransports": ["github-actions-oidc"],
-      "identityEvidence": [
-        "workflow-repository-owner",
-        "namespace-owner",
-        "package-binding"
-      ],
-      "cliPublishPolicy": {
-        "localAllowed": false,
-        "githubActionsAllowed": true
-      },
-      "requiredSourceOwner": "opengameapp",
-      "requiredSourceRepository": "opengameapp/OpenGame-showcases",
-      "namespacePrefix": "io.github.opengameapp/"
     }
   }
 }

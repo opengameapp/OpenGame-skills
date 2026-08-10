@@ -42,7 +42,7 @@
     "artifactSources": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["skill", "mcp"],
+      "required": ["skill"],
       "properties": {
         "skill": { "$ref": "#/$defs/artifactSource" },
         "mcp": { "$ref": "#/$defs/artifactSource" }
@@ -51,7 +51,7 @@
     "surfaces": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["github", "npm", "clawhub", "lobehub", "mcpRegistry"],
+      "required": ["github", "npm", "clawhub", "lobehub"],
       "properties": {
         "github": { "$ref": "#/$defs/surface" },
         "npm": { "$ref": "#/$defs/surface" },

@@ -47,7 +47,7 @@ prompts, or automatic marketplace-publishing credentials.
 
 - [Official website](https://opengame.app/)
 - [AI Game Maker](https://opengame.app/ai-game-generator/ai-game-maker)
-- [Public game showcases](https://github.com/opengameapp/OpenGame-showcases)
+- [Public game showcases](https://opengame.app/showcases)
 
 ## License
 
