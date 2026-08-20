@@ -10,6 +10,7 @@ marketplaces.
 | Skill | Purpose |
 | --- | --- |
 | [OpenGame Browser Game Builder](skills/opengame-browser-game-builder/) | Turn a game idea into a focused, original, playable browser-game plan or prototype. |
+| [OpenGame HTML5 Game Publisher](skills/opengame-html5-game-publisher/) | Prepare, verify, submit, and reconcile browser games across approved HTML5 marketplaces. |
 | [OpenGame Marketplace Publisher](skills/opengame-marketplace-publisher/) | Safely prepare, publish, reconcile, and verify MCP and Skill marketplace releases. |
 
 ## Install
@@ -21,6 +22,9 @@ npx skills add opengameapp/OpenGame-skills \
   --skill opengame-browser-game-builder
 
 npx skills add opengameapp/OpenGame-skills \
+  --skill opengame-html5-game-publisher
+
+npx skills add opengameapp/OpenGame-skills \
   --skill opengame-marketplace-publisher
 ```
 
@@ -29,6 +33,10 @@ npx skills add opengameapp/OpenGame-skills \
 ```text
 skills/
 ├── opengame-browser-game-builder/
+│   ├── SKILL.md
+│   ├── agents/openai.yaml
+│   └── references/
+├── opengame-html5-game-publisher/
 │   ├── SKILL.md
 │   ├── agents/openai.yaml
 │   └── references/

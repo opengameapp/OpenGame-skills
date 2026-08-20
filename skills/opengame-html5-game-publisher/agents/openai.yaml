@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenGame HTML5 Game Publisher"
+  short_description: "Safely prepare and submit HTML5 games"
+  default_prompt: "Use $opengame-html5-game-publisher to prepare, verify, and safely submit this HTML5 game to an approved marketplace."
