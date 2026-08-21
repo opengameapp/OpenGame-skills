@@ -50,6 +50,7 @@ profile, draft, archive, or media set.
 Read the matching reference before preparing or operating that platform:
 
 - GameMonetize: [references/gamemonetize.md](references/gamemonetize.md)
+- Kongregate: [references/kongregate.md](references/kongregate.md)
 
 For a platform without a reference, check its current first-party developer
 documentation and dashboard before acting. Add a concise public-safe reference
