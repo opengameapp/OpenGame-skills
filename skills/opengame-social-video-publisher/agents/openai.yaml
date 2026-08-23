@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenGame Social Video Publisher"
+  short_description: "Publish and verify OpenGame social videos safely"
+  default_prompt: "Use $opengame-social-video-publisher to prepare and publish one reviewed OpenGame video across the approved social channels."
