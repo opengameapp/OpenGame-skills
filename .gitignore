@@ -1,2 +1,14 @@
 .DS_Store
 .codex-state/
+__pycache__/
+*.pyc
+dist/
+.env
+.env.*
+!.env.example
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+node_modules/
+*.log

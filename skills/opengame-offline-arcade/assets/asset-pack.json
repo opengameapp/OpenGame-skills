@@ -1,0 +1,13 @@
+{
+  "packId": "opengame-meadow-v1",
+  "license": "MIT-0",
+  "assets": [
+    { "id": "background", "file": "art/background.svg", "width": 900, "height": 600, "role": "scenic reference" },
+    { "id": "player_idle", "file": "art/player-idle.svg", "width": 96, "height": 96, "role": "player sprite" },
+    { "id": "player_move_1", "file": "art/player-move-1.svg", "width": 96, "height": 96, "role": "player sprite" },
+    { "id": "player_move_2", "file": "art/player-move-2.svg", "width": 96, "height": 96, "role": "player sprite" },
+    { "id": "star", "file": "art/star.svg", "width": 48, "height": 48, "role": "collectible" },
+    { "id": "gem", "file": "art/gem.svg", "width": 48, "height": 48, "role": "collectible" },
+    { "id": "hazard", "file": "art/hazard.svg", "width": 72, "height": 72, "role": "moving obstacle" }
+  ]
+}

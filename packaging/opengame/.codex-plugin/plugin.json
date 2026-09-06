@@ -1,0 +1,30 @@
+{
+  "name": "opengame",
+  "version": "1.0.0",
+  "description": "Create, edit, and export offline 2D browser games with AI, reusable art, preserved versions, and editable downloads.",
+  "author": {"name": "OpenGame", "email": "support@opengame.app", "url": "https://opengame.app"},
+  "homepage": "https://opengame.app",
+  "repository": "https://github.com/opengameapp/OpenGame-skills",
+  "license": "MIT-0",
+  "keywords": ["ai-game-generator", "ai-game", "game-maker", "browser-game", "game-development", "2d", "html5", "arcade", "offline", "prototyping"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "OpenGame AI Game Generator",
+    "shortDescription": "Create & edit 2D games with AI",
+    "longDescription": "Build, revise, and download a small offline 2D browser game with reusable original SVG art and preserved versions. Runs with the host's file and Python tools. No OpenGame account, credits, or remote generation service is required; host tool availability and usage limits apply.",
+    "developerName": "OpenGame",
+    "category": "Productivity",
+    "capabilities": ["Write"],
+    "websiteURL": "https://opengame.app",
+    "privacyPolicyURL": "https://github.com/opengameapp/OpenGame-skills/blob/main/packaging/opengame/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/opengameapp/OpenGame-skills/blob/main/packaging/opengame/TERMS.md",
+    "defaultPrompt": [
+      "Build a small meadow game where I collect stars and dodge hazards.",
+      "Make my arcade game easier while keeping its art and saving a new version.",
+      "Switch my game's stars to gems and export an offline HTML download."
+    ],
+    "brandColor": "#7353D6",
+    "composerIcon": "./assets/icon.svg",
+    "logo": "./assets/icon.svg"
+  }
+}

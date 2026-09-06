@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenGame AI Game Generator"
+  short_description: "Create, edit, and export 2D browser games with AI."
+  default_prompt: "Use $opengame-offline-arcade to build a playable 2D game with reusable art, versioned edits, and an offline download."
